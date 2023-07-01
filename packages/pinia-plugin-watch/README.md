@@ -13,7 +13,7 @@ npm install @jswork/pinia-plugin-watch
 
 ## usage
 ```js
-import piniaPluginWatch from '@jswork/pinia-plugin-watch';
+import PiniaPluginWatch from '@jswork/pinia-plugin-watch';
 
 // ======== main.js  ======
 export function createApp() {
