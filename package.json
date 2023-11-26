@@ -14,7 +14,7 @@
     "lerna:bootstrap": "lerna bootstrap",
     "build": "lerna run build --since master --no-private",
     "build:all": "lerna run build",
-    "publish": "lerna publish --no-git-tag --no-private"
+    "publish": "npm run build && lerna publish --no-private"
   },
   "homepage": "https://js.work",
   "repository": {
