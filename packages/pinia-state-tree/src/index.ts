@@ -29,7 +29,7 @@ const STORE_TREE = {};
 // nx.$useStore api
 const PAIN = {};
 let PINIA_STORES = PAIN;
-const USE_STORE_DEFAULTS = { immediate: false };
+const USE_STORE_DEFAULTS = {immediate: false};
 const isStore = (inTarget) =>
   typeof inTarget.$reset === 'function' && typeof inTarget.$state === 'object';
 
@@ -90,7 +90,7 @@ nx.$map = (inKeys: string[]) => {
 };
 
 nx.$use = (inStores, inOptions?) => {
-  const { immediate } = { ...USE_STORE_DEFAULTS, ...inOptions };
+  const {immediate} = {...USE_STORE_DEFAULTS, ...inOptions};
   const isString = typeof inStores === 'string';
   const isArray = Array.isArray(inStores);
   const isPlainObj = typeof inStores === 'object' && !isArray;
@@ -102,7 +102,7 @@ nx.$use = (inStores, inOptions?) => {
 
   // First time:
   if (isPlainObj) {
-    PINIA_STORES = { ...inStores };
+    PINIA_STORES = {...inStores};
     if (immediate) nx.forIn(PINIA_STORES, (_, fn) => fn());
   }
 
@@ -119,10 +119,11 @@ nx.$use = (inStores, inOptions?) => {
 
 function PiniaStateTree(context) {
   const store = context.store;
-  const { $id, $state } = store;
+  const {$id, $state} = store;
+  const id = $id.replace(/\//g, '.');
 
-  STATE_TREE[$id] = $state;
-  STORE_TREE[$id] = store;
+  STATE_TREE[id] = $state;
+  STORE_TREE[id] = store;
 
   // for vue3:
   nx.$app = context.app;
